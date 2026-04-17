@@ -351,58 +351,106 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get Kern</h2>
-                <p class="section-subtitle">Start writing in minutes</p>
+                <p class="section-subtitle">Choose your platform</p>
             </div>
-            <div class="download-grid">
-                <div class="download-card primary">
-                    <div class="download-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
+            <div class="download-tabs">
+                <div class="download-tab-buttons">
+                    <button class="download-tab-btn active" data-tab="windows">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 12V6.75l6-1.32v6.57L3 12m17-9v8.75l-10 .15V5.21L20 3m-7 10.5l.02-6.49L20 6.2v7.45l-7 .85M3 13l6-.09v6.42L3 18.75V13m17 .25V22l-10-1.32v-6.92l10 .49z"/>
                         </svg>
-                    </div>
-                    <h3 class="download-title">Portable</h3>
-                    <p class="download-description">
-                        Self-contained folder with everything you need. 
-                        No installation required—just extract and run.
-                    </p>
-                    <ul class="download-features">
-                        <li>Windows, Linux, macOS</li>
-                        <li>Includes Kargo package manager</li>
-                        <li>SHA-256 verified</li>
-                    </ul>
-                    <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-windows-x64.zip" class="btn btn-download">
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download Portable
-                    </a>
-                </div>
-                <div class="download-card disabled">
-                    <div class="download-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                        </svg>
-                    </div>
-                    <h3 class="download-title">Installer</h3>
-                    <p class="download-description">
-                        System-wide installation with PATH setup 
-                        and file associations. Recommended for daily use.
-                    </p>
-                    <ul class="download-features">
-                        <li>Automatic PATH configuration</li>
-                        <li>Version management</li>
-                        <li>Desktop integration</li>
-                    </ul>
-                    <button class="btn btn-download-disabled" disabled>
-                        <span class="coming-soon-badge">Coming Soon</span>
+                        Windows
                     </button>
+                    <button class="download-tab-btn" data-tab="linux">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489.129.845.569 1.59 1.23 2.133.926.765 2.201 1.052 3.412 1.052 1.914 0 3.925-.624 5.15-1.356 1.136-.682 2.702-2.156 3.418-3.253.698-1.072 1.52-2.615 1.622-3.888.1-1.251-.2-2.417-.9-3.36-.66-.893-1.711-1.548-2.678-2.1-.986-.56-1.888-1.135-2.193-2.328-.29-1.143-.153-2.633.66-3.404.37-.348.936-.634 1.505-.849-.13-.262-.26-.523-.39-.786-.73.27-1.44.59-2.033.964z"/>
+                        </svg>
+                        Linux
+                    </button>
+                    <button class="download-tab-btn" data-tab="macos">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.98 1.08-3.11-1.06.05-2.31.71-3.06 1.58-.67.77-1.26 1.99-1.1 3.13 1.17.09 2.34-.72 3.08-1.6z"/>
+                        </svg>
+                        macOS
+                    </button>
+                </div>
+                <div class="download-content">
+                    <!-- Windows -->
+                    <div class="download-tab-content active" id="windows">
+                        <div class="download-card primary">
+                            <div class="download-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                            <h3 class="download-title">Windows Portable</h3>
+                            <p class="download-description">
+                                Self-contained folder with everything you need. 
+                                No installation required—just extract and run.
+                            </p>
+                            <ul class="download-features">
+                                <li>Windows 10/11 x64</li>
+                                <li>Includes Kargo package manager</li>
+                                <li>SHA-256 verified</li>
+                            </ul>
+                            <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-windows-x64.zip" class="btn btn-download">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download v2.0.1
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Linux -->
+                    <div class="download-tab-content" id="linux">
+                        <div class="download-card disabled">
+                            <div class="download-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="download-title">Linux</h3>
+                            <p class="download-description">
+                                Linux builds are currently in development.
+                                Check back soon for x64 and ARM64 releases.
+                            </p>
+                            <ul class="download-features">
+                                <li>Ubuntu, Debian, Fedora support</li>
+                                <li>Coming: x64 & ARM64 builds</li>
+                                <li>Package manager: apt, dnf</li>
+                            </ul>
+                            <button class="btn btn-download-disabled" disabled>
+                                <span class="coming-soon-badge">Coming Soon</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- macOS -->
+                    <div class="download-tab-content" id="macos">
+                        <div class="download-card disabled">
+                            <div class="download-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="download-title">macOS</h3>
+                            <p class="download-description">
+                                macOS builds are currently in development.
+                                Check back soon for Intel and Apple Silicon releases.
+                            </p>
+                            <ul class="download-features">
+                                <li>Intel & Apple Silicon support</li>
+                                <li>Coming: x64 & ARM64 builds</li>
+                                <li>Package manager: Homebrew</li>
+                            </ul>
+                            <button class="btn btn-download-disabled" disabled>
+                                <span class="coming-soon-badge">Coming Soon</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

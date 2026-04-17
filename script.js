@@ -194,4 +194,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // Download tabs functionality
+    const downloadTabButtons = document.querySelectorAll('.download-tab-btn');
+    const downloadTabContents = document.querySelectorAll('.download-tab-content');
+    
+    downloadTabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.dataset.tab;
+            
+            // Update button states
+            downloadTabButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update content visibility
+            downloadTabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === tabId) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    });
 });
