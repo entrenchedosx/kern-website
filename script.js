@@ -166,8 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const filenames = {
         'hello': 'hello.kn',
-        'fileio': 'file_io.kn',
-        'http': 'http.kn',
+        'functions': 'functions.kn',
+        'match': 'match.kn',
         'game': 'game.kn'
     };
     

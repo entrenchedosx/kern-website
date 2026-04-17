@@ -194,8 +194,8 @@
             <div class="code-tabs">
                 <div class="code-tab-buttons">
                     <button class="code-tab-btn active" data-tab="hello">Hello World</button>
-                    <button class="code-tab-btn" data-tab="fileio">File I/O</button>
-                    <button class="code-tab-btn" data-tab="http">HTTP Request</button>
+                    <button class="code-tab-btn" data-tab="functions">Functions</button>
+                    <button class="code-tab-btn" data-tab="match">Match</button>
                     <button class="code-tab-btn" data-tab="game">3D Game</button>
                 </div>
                 <div class="code-window">
@@ -215,20 +215,34 @@
 <span class="comment">// Variables and expressions</span>
 <span class="keyword">let</span> name <span class="punct">=</span> <span class="string">"developer"</span>
 <span class="function">print</span><span class="punct">(</span><span class="string">"Welcome,"</span><span class="punct">,</span> name<span class="punct">)</span></code></pre>
-                        <!-- File I/O Tab -->
-                        <pre class="code-tab-content" id="fileio"><code><span class="comment">// Read and write files with built-in functions</span>
-<span class="keyword">let</span> content <span class="punct">=</span> <span class="function">readFile</span><span class="punct">(</span><span class="string">"input.txt"</span><span class="punct">)</span>
-<span class="function">print</span><span class="punct">(</span><span class="string">"File contents:"</span><span class="punct">,</span> content<span class="punct">)</span>
+                        <!-- Functions Tab -->
+                        <pre class="code-tab-content" id="functions"><code><span class="comment">// Define functions with 'def'</span>
+<span class="keyword">def</span> <span class="function">add</span><span class="punct">(</span>a<span class="punct">,</span> b<span class="punct">) {</span>
+    <span class="keyword">return</span> a <span class="punct">+</span> b
+<span class="punct">}</span>
 
-<span class="comment">// Write to file</span>
-<span class="function">writeFile</span><span class="punct">(</span><span class="string">"output.txt"</span><span class="punct">,</span> <span class="string">"Hello from Kern!"</span><span class="punct">)</span>
-<span class="function">print</span><span class="punct">(</span><span class="string">"File written successfully"</span><span class="punct">)</span></code></pre>
-                        <!-- HTTP Tab -->
-                        <pre class="code-tab-content" id="http"><code><span class="comment">// Fetch data from the web</span>
-<span class="keyword">let</span> http <span class="punct">=</span> <span class="function">import</span><span class="punct">(</span><span class="string">"std.v1.http"</span><span class="punct">)</span>
+<span class="comment">// Lambda expressions</span>
+<span class="keyword">let</span> multiply <span class="punct">=</span> <span class="function">lambda</span> <span class="punct">(</span>x<span class="punct">,</span> y<span class="punct">) =></span> x <span class="punct">*</span> y
 
-<span class="keyword">let</span> response <span class="punct">=</span> http<span class="punct">.</span><span class="function">get</span><span class="punct">(</span><span class="string">"https://api.github.com/repos/entrenchedosx/kern"</span><span class="punct">)</span>
-<span class="function">print</span><span class="punct">(</span><span class="string">"Stars:"</span><span class="punct">,</span> response<span class="punct">[</span><span class="string">"stargazers_count"</span><span class="punct">])</span></code></pre>
+<span class="function">print</span><span class="punct">(</span><span class="string">"2 + 3 ="</span><span class="punct">,</span> <span class="function">add</span><span class="punct">(</span><span class="number">2</span><span class="punct">,</span> <span class="number">3</span><span class="punct">))</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"4 * 5 ="</span><span class="punct">,</span> multiply<span class="punct">(</span><span class="number">4</span><span class="punct">,</span> <span class="number">5</span><span class="punct">))</span></code></pre>
+                        <!-- Match Tab -->
+                        <pre class="code-tab-content" id="match"><code><span class="comment">// Pattern matching with match</span>
+<span class="keyword">let</span> status <span class="punct">=</span> <span class="number">200</span>
+
+<span class="function">match</span> <span class="punct">(</span>status<span class="punct">) {</span>
+    <span class="keyword">case</span> <span class="number">200</span> <span class="punct">=></span> <span class="function">print</span><span class="punct">(</span><span class="string">"OK"</span><span class="punct">)</span>
+    <span class="keyword">case</span> <span class="number">404</span> <span class="punct">=></span> <span class="function">print</span><span class="punct">(</span><span class="string">"Not found"</span><span class="punct">)</span>
+    <span class="keyword">case</span> <span class="number">500</span> <span class="punct">=></span> <span class="function">print</span><span class="punct">(</span><span class="string">"Server error"</span><span class="punct">)</span>
+    <span class="keyword">case</span> _ <span class="punct">=></span> <span class="function">print</span><span class="punct">(</span><span class="string">"Unknown"</span><span class="punct">)</span>
+<span class="punct">}</span>
+
+<span class="comment">// Works with any value type</span>
+<span class="keyword">let</span> x <span class="punct">=</span> <span class="string">"hello"</span>
+<span class="function">match</span> <span class="punct">(</span>x<span class="punct">) {</span>
+    <span class="keyword">case</span> <span class="string">"hello"</span> <span class="punct">=></span> <span class="function">print</span><span class="punct">(</span><span class="string">"Greeting detected"</span><span class="punct">)</span>
+    <span class="keyword">case</span> _ <span class="punct">=></span> <span class="function">print</span><span class="punct">(</span><span class="string">"Something else"</span><span class="punct">)</span>
+<span class="punct">}</span></code></pre>
                         <!-- 3D Game Tab -->
                         <pre class="code-tab-content" id="game"><code><span class="comment">// 3D game with Kern</span>
 <span class="keyword">def</span> <span class="function">main</span><span class="punct">() {</span>
