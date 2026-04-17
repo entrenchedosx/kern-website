@@ -510,10 +510,16 @@ body {
 
 .code-tab-buttons {
     display: flex;
-    gap: 8px;
+    gap: 4px;
     margin-bottom: -1px;
-    padding: 0 4px;
-    flex-wrap: wrap;
+    padding: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.code-tab-buttons::-webkit-scrollbar {
+    display: none;
 }
 
 .code-tab-btn {
@@ -957,7 +963,45 @@ body {
 /* ========================================
    Responsive Design
    ======================================== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .download-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .donate-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile (< 768px) */
 @media (max-width: 768px) {
+    /* Navigation */
     .nav-links {
         position: fixed;
         top: 64px;
@@ -965,13 +1009,15 @@ body {
         right: 0;
         background: var(--bg-secondary);
         flex-direction: column;
-        padding: 24px;
-        gap: 16px;
+        padding: 20px;
+        gap: 12px;
         border-bottom: 1px solid var(--border-color);
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
         transition: var(--transition-base);
+        max-height: calc(100vh - 64px);
+        overflow-y: auto;
     }
     
     .nav-links.active {
@@ -980,54 +1026,240 @@ body {
         visibility: visible;
     }
     
+    .nav-links a {
+        padding: 12px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+    
     .nav-toggle {
         display: flex;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 100px 16px 60px;
+        min-height: auto;
+    }
+    
+    .hero-badges {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
     }
     
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
     }
     
     .btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         justify-content: center;
+        padding: 12px 24px;
     }
     
+    /* Sections */
+    .features,
+    .code-section,
+    .download,
+    .donate {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Grids */
     .features-grid,
-    .download-grid {
+    .download-grid,
+    .donate-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .feature-card,
+    .download-card,
+    .donate-card {
+        padding: 24px;
+    }
+    
+    /* Code tabs - scrollable on mobile */
+    .code-tab-buttons {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    
+    .code-tab-buttons::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .code-tab-btn {
+        flex-shrink: 0;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .code-window {
+        border-radius: 0 0 12px 12px;
+    }
+    
+    .code-content {
+        padding: 16px;
+    }
+    
+    .code-content code {
+        font-size: 0.8rem;
+    }
+    
+    .code-features {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .code-feature {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+    
+    /* Donate */
+    .donate-address {
+        font-size: 0.75rem;
+        padding: 10px 12px;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 40px 0 20px;
     }
     
     .footer-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 24px;
     }
     
-    .code-features {
-        flex-direction: column;
-        align-items: center;
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
+/* Small Mobile (< 480px) */
 @media (max-width: 480px) {
     .container {
-        padding: 0 16px;
+        padding: 0 12px;
     }
     
     .nav-container {
-        padding: 0 16px;
+        padding: 0 12px;
+        height: 56px;
+    }
+    
+    .nav-logo {
+        font-size: 1.1rem;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
     }
     
     .hero {
-        padding: 100px 16px 60px;
+        padding: 80px 12px 40px;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
     }
     
     .feature-card,
-    .download-card {
-        padding: 24px;
+    .download-card,
+    .donate-card {
+        padding: 20px;
+    }
+    
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .feature-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .feature-title {
+        font-size: 1.1rem;
+    }
+    
+    .feature-description {
+        font-size: 0.9rem;
+    }
+    
+    .download-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .download-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .download-title {
+        font-size: 1.2rem;
+    }
+    
+    .donate-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .donate-title {
+        font-size: 1.1rem;
+    }
+    
+    .code-filename {
+        font-size: 0.75rem;
+    }
+    
+    .scroll-indicator {
+        display: none;
     }
 }
 
