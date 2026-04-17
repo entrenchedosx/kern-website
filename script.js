@@ -157,6 +157,69 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
     
+    // Parallax effect for hero background
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    }
+    
+    // Typing effect for hero subtitle
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+        const text = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        heroSubtitle.style.opacity = '1';
+        
+        let charIndex = 0;
+        const typeInterval = setInterval(() => {
+            if (charIndex < text.length) {
+                heroSubtitle.textContent += text.charAt(charIndex);
+                charIndex++;
+            } else {
+                clearInterval(typeInterval);
+            }
+        }, 50);
+    }
+    
+    // Magnetic button effect
+    document.querySelectorAll('.btn-primary, .btn-download').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+    
+    // 3D Tilt effect for cards
+    document.querySelectorAll('.feature-card, .step-card, .donate-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    });
+    
     // Copy to clipboard for donate section
     const copyButtons = document.querySelectorAll('.btn-copy');
     copyButtons.forEach(btn => {
