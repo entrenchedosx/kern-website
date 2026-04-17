@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kern Programming Language</title>
+    <meta name="description" content="Kern - Python-like productivity, C++-level system access. A programming language with readable scripts, fast bytecode VM, and inspectable pipeline.">
+    <meta property="og:title" content="Kern Programming Language">
+    <meta property="og:description" content="Python-like productivity. C++-level system access.">
+    <meta property="og:image" content="https://github.com/entrenchedosx/kern/raw/main/kern_logo.png">
+    <meta property="og:url" content="https://entrenchedosx.github.io/kern-website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="https://github.com/entrenchedosx/kern/raw/main/kern_logo.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +27,7 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#code">Examples</a></li>
+                <li><a href="https://github.com/entrenchedosx/kern/tree/main/docs" target="_blank">Docs</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#donate">Donate</a></li>
                 <li><a href="https://github.com/entrenchedosx/kern" target="_blank">GitHub</a></li>
@@ -36,7 +44,15 @@
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-badge fade-in">v2.0.1</div>
+            <div class="hero-badges fade-in">
+                <span class="hero-badge">v2.0.1</span>
+                <a href="https://github.com/entrenchedosx/kern" target="_blank" class="github-stars">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>Star on GitHub</span>
+                </a>
+            </div>
             <h1 class="hero-title fade-in">Kern Programming Language</h1>
             <p class="hero-subtitle fade-in">Python-like productivity. C++-level system access.</p>
             <p class="hero-description fade-in">
@@ -173,19 +189,48 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Write Kern Code</h2>
-                <p class="section-subtitle">Familiar syntax with modern features</p>
+                <p class="section-subtitle">From scripts to systems to games</p>
             </div>
-            <div class="code-window">
-                <div class="code-header">
-                    <div class="code-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <span class="code-filename">game.kn</span>
+            <div class="code-tabs">
+                <div class="code-tab-buttons">
+                    <button class="code-tab-btn active" data-tab="hello">Hello World</button>
+                    <button class="code-tab-btn" data-tab="fileio">File I/O</button>
+                    <button class="code-tab-btn" data-tab="http">HTTP Request</button>
+                    <button class="code-tab-btn" data-tab="game">3D Game</button>
                 </div>
-                <div class="code-content">
-                    <pre><code><span class="comment">// 3D game with Kern - Python-like syntax, C++ performance</span>
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-filename" id="code-filename">hello.kn</span>
+                    </div>
+                    <div class="code-content">
+                        <!-- Hello World Tab -->
+                        <pre class="code-tab-content active" id="hello"><code><span class="comment">// No main() required - statements run at top level</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"Hello, Kern!"</span><span class="punct">)</span>
+
+<span class="comment">// Variables and expressions</span>
+<span class="keyword">let</span> name <span class="punct">=</span> <span class="string">"developer"</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"Welcome,"</span><span class="punct">,</span> name<span class="punct">)</span></code></pre>
+                        <!-- File I/O Tab -->
+                        <pre class="code-tab-content" id="fileio"><code><span class="comment">// Read and write files with built-in functions</span>
+<span class="keyword">let</span> content <span class="punct">=</span> <span class="function">readFile</span><span class="punct">(</span><span class="string">"input.txt"</span><span class="punct">)</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"File contents:"</span><span class="punct">,</span> content<span class="punct">)</span>
+
+<span class="comment">// Write to file</span>
+<span class="function">writeFile</span><span class="punct">(</span><span class="string">"output.txt"</span><span class="punct">,</span> <span class="string">"Hello from Kern!"</span><span class="punct">)</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"File written successfully"</span><span class="punct">)</span></code></pre>
+                        <!-- HTTP Tab -->
+                        <pre class="code-tab-content" id="http"><code><span class="comment">// Fetch data from the web</span>
+<span class="keyword">let</span> http <span class="punct">=</span> <span class="function">import</span><span class="punct">(</span><span class="string">"std.v1.http"</span><span class="punct">)</span>
+
+<span class="keyword">let</span> response <span class="punct">=</span> http<span class="punct">.</span><span class="function">get</span><span class="punct">(</span><span class="string">"https://api.github.com/repos/entrenchedosx/kern"</span><span class="punct">)</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"Stars:"</span><span class="punct">,</span> response<span class="punct">[</span><span class="string">"stargazers_count"</span><span class="punct">])</span></code></pre>
+                        <!-- 3D Game Tab -->
+                        <pre class="code-tab-content" id="game"><code><span class="comment">// 3D game with Kern</span>
 <span class="keyword">def</span> <span class="function">main</span><span class="punct">() {</span>
     <span class="keyword">let</span> g3 <span class="punct">=</span> <span class="function">import</span><span class="punct">(</span><span class="string">"g3d"</span><span class="punct">)</span>
     
@@ -200,36 +245,24 @@
     <span class="keyword">let</span> update <span class="punct">=</span> <span class="function">lambda</span> <span class="punct">() => {</span>
         angle <span class="punct">=</span> angle <span class="punct">+</span> <span class="number">0.02</span>
         g3<span class="punct">.</span><span class="function">setRotation</span><span class="punct">(</span>cube<span class="punct">,</span> <span class="number">0.0</span><span class="punct">,</span> angle<span class="punct">,</span> <span class="number">0.0</span><span class="punct">)</span>
-        
-        <span class="comment">// WASD camera controls</span>
-        <span class="keyword">if</span> <span class="punct">(</span>g3<span class="punct">.</span><span class="function">isKeyDown</span><span class="punct">(</span><span class="number">87</span><span class="punct">)) {</span> <span class="comment">// W</span>
-            <span class="comment">// Move forward</span>
-        <span class="punct">}</span>
     <span class="punct">}</span>
 
     <span class="keyword">let</span> draw <span class="punct">=</span> <span class="function">lambda</span> <span class="punct">() => {</span>
-        <span class="comment">// Rendering is handled automatically</span>
+        <span class="comment">// Rendering handled automatically</span>
     <span class="punct">}</span>
 
     g3<span class="punct">.</span><span class="function">run</span><span class="punct">(</span>update<span class="punct">,</span> draw<span class="punct">)</span>
 <span class="punct">}</span>
 
 <span class="function">main</span><span class="punct">()</span></code></pre>
+                    </div>
                 </div>
             </div>
             <div class="code-features">
-                <div class="code-feature">
-                    <code>match</code> statements
-                </div>
-                <div class="code-feature">
-                    <code>try/catch</code> error handling
-                </div>
-                <div class="code-feature">
-                    <code>lambda</code> expressions
-                </div>
-                <div class="code-feature">
-                    <code>defer</code> cleanup
-                </div>
+                <div class="code-feature"><code>match</code> statements</div>
+                <div class="code-feature"><code>try/catch</code> error handling</div>
+                <div class="code-feature"><code>lambda</code> expressions</div>
+                <div class="code-feature"><code>defer</code> cleanup</div>
             </div>
         </div>
     </section>

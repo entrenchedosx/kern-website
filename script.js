@@ -158,4 +158,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+    
+    // Code tabs functionality
+    const tabButtons = document.querySelectorAll('.code-tab-btn');
+    const tabContents = document.querySelectorAll('.code-tab-content');
+    const codeFilename = document.getElementById('code-filename');
+    
+    const filenames = {
+        'hello': 'hello.kn',
+        'fileio': 'file_io.kn',
+        'http': 'http.kn',
+        'game': 'game.kn'
+    };
+    
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.dataset.tab;
+            
+            // Update button states
+            tabButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update content visibility
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === tabId) {
+                    content.classList.add('active');
+                }
+            });
+            
+            // Update filename
+            if (codeFilename && filenames[tabId]) {
+                codeFilename.textContent = filenames[tabId];
+            }
+        });
+    });
 });
