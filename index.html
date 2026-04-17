@@ -197,6 +197,7 @@
                     <button class="code-tab-btn" data-tab="functions">Functions</button>
                     <button class="code-tab-btn" data-tab="match">Match</button>
                     <button class="code-tab-btn" data-tab="game">3D Game</button>
+                    <button class="code-tab-btn" data-tab="reference">Reference</button>
                 </div>
                 <div class="code-window">
                     <div class="code-header">
@@ -269,14 +270,47 @@
 <span class="punct">}</span>
 
 <span class="function">main</span><span class="punct">()</span></code></pre>
+                        <!-- Reference Tab -->
+                        <div class="code-tab-content ref-tab-content" id="reference">
+                            <div class="ref-columns">
+                                <div class="ref-column">
+                                    <h4 class="ref-column-title">Statements</h4>
+                                    <p><code>let</code> <code>var</code> <code>const</code></p>
+                                    <p><code>def</code> functions</p>
+                                    <p><code>class</code> types</p>
+                                    <p><code>return</code> <code>if</code> <code>else</code></p>
+                                    <p><code>while</code> <code>for</code> <code>match</code></p>
+                                    <p><code>try</code> <code>catch</code> <code>defer</code></p>
+                                </div>
+                                <div class="ref-column">
+                                    <h4 class="ref-column-title">Values</h4>
+                                    <p>Numbers, strings, booleans</p>
+                                    <p><code>nil</code> (null)</p>
+                                    <p>Arrays <code>[a, b]</code></p>
+                                    <p>Maps <code>{"k": v}</code></p>
+                                    <p>Lambda expressions</p>
+                                    <p>Function refs</p>
+                                </div>
+                                <div class="ref-column">
+                                    <h4 class="ref-column-title">Operators</h4>
+                                    <p>Math: <code>+ - * / %</code></p>
+                                    <p>Compare: <code>== != < ></code></p>
+                                    <p>Logic: <code>&& || !</code></p>
+                                    <p>Optional: <code>?.</code></p>
+                                    <p>Coalesce: <code>??</code></p>
+                                </div>
+                                <div class="ref-column">
+                                    <h4 class="ref-column-title">Modules</h4>
+                                    <p><code>import("mod")</code></p>
+                                    <p><code>from "mod" import fn</code></p>
+                                    <p>Builtin: <code>g2d</code> <code>g3d</code></p>
+                                    <p>Stdlib: <code>std.v1.*</code></p>
+                                </div>
+                            </div>
+                            <a href="https://github.com/entrenchedosx/kern/tree/main/docs" target="_blank" class="ref-full-link">Full Documentation →</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="code-features">
-                <div class="code-feature"><code>match</code> statements</div>
-                <div class="code-feature"><code>try/catch</code> error handling</div>
-                <div class="code-feature"><code>lambda</code> expressions</div>
-                <div class="code-feature"><code>defer</code> cleanup</div>
             </div>
             <p class="code-note">System operations (filesystem, networking, graphics) require <code>kern --unsafe</code> flag. Basic scripts run without it.</p>
         </div>
@@ -308,63 +342,6 @@
                     <p class="step-description">Execute with the Kern VM.</p>
                     <code class="step-code">./kern.exe myscript.kn</code>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Language Reference Section -->
-    <section class="reference" id="reference">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Language Reference</h2>
-                <p class="section-subtitle">Core syntax at a glance</p>
-            </div>
-            <div class="ref-grid">
-                <div class="ref-card">
-                    <h4 class="ref-category">Statements</h4>
-                    <ul class="ref-list">
-                        <li><code>let</code> / <code>var</code> / <code>const</code></li>
-                        <li><code>def</code> functions</li>
-                        <li><code>class</code> types</li>
-                        <li><code>return</code>, <code>if</code> / <code>else</code></li>
-                        <li><code>while</code>, <code>for</code>, <code>match</code></li>
-                        <li><code>try</code> / <code>catch</code> / <code>defer</code></li>
-                    </ul>
-                </div>
-                <div class="ref-card">
-                    <h4 class="ref-category">Values</h4>
-                    <ul class="ref-list">
-                        <li>Numbers, strings, booleans</li>
-                        <li><code>nil</code> (null)</li>
-                        <li>Arrays <code>[a, b]</code></li>
-                        <li>Maps <code>{ "key": value }</code></li>
-                        <li>Lambda expressions</li>
-                        <li>Function references</li>
-                    </ul>
-                </div>
-                <div class="ref-card">
-                    <h4 class="ref-category">Operators</h4>
-                    <ul class="ref-list">
-                        <li>Math: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></li>
-                        <li>Compare: <code>==</code> <code>!=</code> <code>&lt;</code> <code>&gt;</code></li>
-                        <li>Logic: <code>&&</code> <code>||</code> <code>!</code></li>
-                        <li>Optional: <code>?.</code></li>
-                        <li>Null coalesce: <code>??</code></li>
-                    </ul>
-                </div>
-                <div class="ref-card">
-                    <h4 class="ref-category">Modules</h4>
-                    <ul class="ref-list">
-                        <li><code>import("math")</code></li>
-                        <li><code>import("lib/kern/foo")</code></li>
-                        <li><code>from "mod" import fn</code></li>
-                        <li>Built-in: <code>g2d</code>, <code>g3d</code></li>
-                        <li>Stdlib: <code>std.v1.*</code></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="ref-links">
-                <a href="https://github.com/entrenchedosx/kern/tree/main/docs" target="_blank" class="ref-link">Full Documentation →</a>
             </div>
         </div>
     </section>

@@ -852,88 +852,62 @@ body {
 }
 
 /* ========================================
-   Reference Section
+   Reference Tab (inside code window)
    ======================================== */
-.reference {
-    padding: 100px 0;
-    background: var(--bg-primary);
+.ref-tab-content {
+    padding: 24px;
 }
 
-.ref-grid {
+.ref-columns {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
-.ref-card {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 28px;
-    transition: var(--transition-base);
+.ref-column {
+    padding: 0 8px;
 }
 
-.ref-card:hover {
-    border-color: var(--border-subtle);
-    transform: translateY(-2px);
-}
-
-.ref-category {
-    font-size: 0.9rem;
+.ref-column-title {
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--accent-primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--border-color);
 }
 
-.ref-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.ref-list li {
+.ref-column p {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    padding: 6px 0;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    padding: 4px 0;
+    margin: 0;
+    line-height: 1.4;
 }
 
-.ref-list li code {
+.ref-column p code {
     color: var(--accent-secondary);
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
-.ref-links {
+.ref-full-link {
+    display: block;
     text-align: center;
-    margin-top: 40px;
-}
-
-.ref-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
     color: var(--accent-primary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: var(--transition-fast);
 }
 
-.ref-link:hover {
+.ref-full-link:hover {
     color: var(--accent-secondary);
-    gap: 12px;
-}
-
-.ref-link::after {
-    content: '→';
-    transition: var(--transition-fast);
 }
 
 /* ========================================
@@ -1165,6 +1139,11 @@ body {
         gap: 20px;
     }
     
+    .ref-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
     .ref-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1299,6 +1278,26 @@ body {
     
     .step-title {
         font-size: 1.1rem;
+    }
+    
+    .ref-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .ref-column {
+        padding: 0;
+    }
+    
+    .ref-column-title {
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+    }
+    
+    .ref-column p {
+        font-size: 0.8rem;
+        padding: 3px 0;
     }
     
     .ref-grid {

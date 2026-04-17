@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'hello': 'hello.kn',
         'functions': 'functions.kn',
         'match': 'match.kn',
-        'game': 'game.kn'
+        'game': 'game.kn',
+        'reference': 'Language Reference'
     };
     
     tabButtons.forEach(btn => {
