@@ -767,6 +767,161 @@ body {
 }
 
 /* ========================================
+   Quick Start Section
+   ======================================== */
+.quickstart {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.step-card {
+    text-align: center;
+    padding: 32px 24px;
+    position: relative;
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.step-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.step-description code {
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+}
+
+.step-code {
+    display: inline-block;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+}
+
+/* ========================================
+   Reference Section
+   ======================================== */
+.reference {
+    padding: 100px 0;
+    background: var(--bg-primary);
+}
+
+.ref-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ref-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 28px;
+    transition: var(--transition-base);
+}
+
+.ref-card:hover {
+    border-color: var(--border-subtle);
+    transform: translateY(-2px);
+}
+
+.ref-category {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ref-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ref-list li {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 6px 0;
+    line-height: 1.5;
+}
+
+.ref-list li code {
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.ref-links {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.ref-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.ref-link:hover {
+    color: var(--accent-secondary);
+    gap: 12px;
+}
+
+.ref-link::after {
+    content: '→';
+    transition: var(--transition-fast);
+}
+
+/* ========================================
    Donate Section
    ======================================== */
 .donate {
@@ -990,6 +1145,15 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .ref-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .section-header {
         margin-bottom: 40px;
     }
@@ -1079,6 +1243,8 @@ body {
     /* Sections */
     .features,
     .code-section,
+    .quickstart,
+    .reference,
     .download,
     .donate {
         padding: 60px 0;
@@ -1098,6 +1264,44 @@ body {
     .donate-grid {
         grid-template-columns: 1fr;
         gap: 16px;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 400px;
+    }
+    
+    .step-card {
+        padding: 24px 20px;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .step-title {
+        font-size: 1.1rem;
+    }
+    
+    .ref-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: 400px;
+    }
+    
+    .ref-card {
+        padding: 24px;
+    }
+    
+    .ref-category {
+        font-size: 0.85rem;
+    }
+    
+    .ref-list li {
+        font-size: 0.9rem;
     }
     
     .feature-card,

@@ -267,6 +267,93 @@
         </div>
     </section>
 
+    <!-- Quick Start Section -->
+    <section class="quickstart" id="quickstart">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Quick Start</h2>
+                <p class="section-subtitle">Get up and running in 3 steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Download</h3>
+                    <p class="step-description">Extract the portable archive. No installer needed.</p>
+                    <code class="step-code">kern-v2.0.1-windows-x64.zip</code>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Write</h3>
+                    <p class="step-description">Create a <code>.kn</code> file. No main() required.</p>
+                    <code class="step-code">print("Hello, Kern!")</code>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Run</h3>
+                    <p class="step-description">Execute with the Kern VM.</p>
+                    <code class="step-code">./kern.exe myscript.kn</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Reference Section -->
+    <section class="reference" id="reference">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Language Reference</h2>
+                <p class="section-subtitle">Core syntax at a glance</p>
+            </div>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4 class="ref-category">Statements</h4>
+                    <ul class="ref-list">
+                        <li><code>let</code> / <code>var</code> / <code>const</code></li>
+                        <li><code>def</code> functions</li>
+                        <li><code>class</code> types</li>
+                        <li><code>return</code>, <code>if</code> / <code>else</code></li>
+                        <li><code>while</code>, <code>for</code>, <code>match</code></li>
+                        <li><code>try</code> / <code>catch</code> / <code>defer</code></li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4 class="ref-category">Values</h4>
+                    <ul class="ref-list">
+                        <li>Numbers, strings, booleans</li>
+                        <li><code>nil</code> (null)</li>
+                        <li>Arrays <code>[a, b]</code></li>
+                        <li>Maps <code>{ "key": value }</code></li>
+                        <li>Lambda expressions</li>
+                        <li>Function references</li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4 class="ref-category">Operators</h4>
+                    <ul class="ref-list">
+                        <li>Math: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></li>
+                        <li>Compare: <code>==</code> <code>!=</code> <code>&lt;</code> <code>&gt;</code></li>
+                        <li>Logic: <code>&&</code> <code>||</code> <code>!</code></li>
+                        <li>Optional: <code>?.</code></li>
+                        <li>Null coalesce: <code>??</code></li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4 class="ref-category">Modules</h4>
+                    <ul class="ref-list">
+                        <li><code>import("math")</code></li>
+                        <li><code>import("lib/kern/foo")</code></li>
+                        <li><code>from "mod" import fn</code></li>
+                        <li>Built-in: <code>g2d</code>, <code>g3d</code></li>
+                        <li>Stdlib: <code>std.v1.*</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ref-links">
+                <a href="https://github.com/entrenchedosx/kern/tree/main/docs" target="_blank" class="ref-link">Full Documentation →</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Download Section -->
     <section class="download" id="download">
         <div class="container">
