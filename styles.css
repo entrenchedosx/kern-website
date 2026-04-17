@@ -790,6 +790,15 @@ body {
     font-weight: 700;
 }
 
+.download-features li.feature-limited {
+    color: var(--warning);
+}
+
+.download-features li.feature-limited::before {
+    content: '○';
+    color: var(--warning);
+}
+
 .btn-download {
     background: var(--gradient-primary);
     color: var(--bg-primary);

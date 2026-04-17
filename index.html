@@ -316,7 +316,7 @@
                     </div>
                 </div>
             </div>
-            <p class="code-note">System operations (filesystem, networking, graphics) require <code>kern --unsafe</code> flag. Basic scripts run without it.</p>
+            <p class="code-note">System operations (filesystem, networking, graphics) require <code>kern --unsafe</code> flag. Graphics modules (g2d/g3d) are currently Windows-only—Linux support in development.</p>
         </div>
     </section>
 
@@ -415,25 +415,32 @@
                     </div>
                     <!-- Linux -->
                     <div class="download-tab-content" id="linux">
-                        <div class="download-card disabled">
+                        <div class="download-card">
                             <div class="download-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
                                 </svg>
                             </div>
-                            <h3 class="download-title">Linux</h3>
+                            <h3 class="download-title">Linux x64</h3>
                             <p class="download-description">
-                                Linux builds are currently in development.
-                                Check back soon for x64 and ARM64 releases.
+                                Tar.gz archive for Linux x64 systems.
+                                All core features work. Graphics modules (g2d/g3d) are Windows-only.
                             </p>
                             <ul class="download-features">
                                 <li>Ubuntu, Debian, Fedora support</li>
-                                <li>Coming: x64 & ARM64 builds</li>
-                                <li>Package manager: apt, dnf</li>
+                                <li>Core language & stdlib fully functional</li>
+                                <li class="feature-limited">Graphics: g2d/g3d coming soon</li>
                             </ul>
-                            <button class="btn btn-download-disabled" disabled>
-                                <span class="coming-soon-badge">Coming Soon</span>
-                            </button>
+                            <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-linux-x64.tar.gz" class="btn btn-download">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download v2.0.1
+                            </a>
                         </div>
                     </div>
                     <!-- macOS -->
