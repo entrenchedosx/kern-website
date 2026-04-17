@@ -141,6 +141,22 @@ document.addEventListener('DOMContentLoaded', () => {
         codeObserver.observe(codeWindow);
     }
     
+    // Step cards animation
+    document.querySelectorAll('.step-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        observer.observe(card);
+    });
+    
+    // Donate cards animation
+    document.querySelectorAll('.donate-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
+    
     // Copy to clipboard for donate section
     const copyButtons = document.querySelectorAll('.btn-copy');
     copyButtons.forEach(btn => {
