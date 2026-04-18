@@ -212,6 +212,7 @@
                     <button class="code-tab-btn" data-tab="functions">Functions</button>
                     <button class="code-tab-btn" data-tab="match">Match</button>
                     <button class="code-tab-btn" data-tab="game">3D Game</button>
+                    <button class="code-tab-btn" data-tab="unsafe">Unsafe FFI</button>
                     <button class="code-tab-btn" data-tab="reference">Reference</button>
                 </div>
                 <div class="code-window">
@@ -285,6 +286,37 @@
 <span class="punct">}</span>
 
 <span class="function">main</span><span class="punct">()</span></code></pre>
+                        <!-- Unsafe FFI Tab -->
+                        <pre class="code-tab-content" id="unsafe"><code><span class="comment">// unsafe_demo.kn - Demonstrates unsafe block for FFI calls</span>
+<span class="comment">// This example uses FFI to call Windows kernel32.dll functions</span>
+
+<span class="function">print</span><span class="punct">(</span><span class="string">"=== UNSAFE BLOCK DEMO ==="</span><span class="punct">)</span>
+
+<span class="comment">// Import the interop module for FFI</span>
+<span class="keyword">let</span> interop <span class="punct">=</span> <span class="function">import</span><span class="punct">(</span><span class="string">"interop"</span><span class="punct">)</span>
+
+<span class="comment">// To use FFI, we need to be in an unsafe block</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"Entering unsafe block to call Windows API..."</span><span class="punct">)</span>
+
+<span class="keyword">unsafe</span> <span class="punct">{</span>
+    <span class="function">print</span><span class="punct">(</span><span class="string">"  Inside unsafe block!"</span><span class="punct">)</span>
+    
+    <span class="comment">// Allow kernel32.dll for FFI calls</span>
+    interop<span class="punct">.</span><span class="function">ffi_allow_library</span><span class="punct">(</span><span class="string">"kernel32.dll"</span><span class="punct">)</span>
+    
+    <span class="comment">// Call GetTickCount - returns milliseconds since system start</span>
+    <span class="keyword">let</span> tickCount <span class="punct">=</span> interop<span class="punct">.</span><span class="function">ffi_call</span><span class="punct">(</span><span class="string">"kernel32.dll"</span><span class="punct">,</span> <span class="string">"GetTickCount"</span><span class="punct">,</span> <span class="string">"u32"</span><span class="punct">,</span> <span class="string">"win64"</span><span class="punct">,</span> <span class="punct">[])</span>
+    <span class="function">print</span><span class="punct">(</span><span class="string">"  GetTickCount() = "</span> <span class="punct">+</span> tickCount <span class="punct">+</span> <span class="string">" ms"</span><span class="punct">)</span>
+    
+    <span class="comment">// Convert to hours/minutes/seconds</span>
+    <span class="keyword">let</span> seconds <span class="punct">=</span> tickCount <span class="punct">/</span> <span class="number">1000</span>
+    <span class="keyword">let</span> minutes <span class="punct">=</span> seconds <span class="punct">/</span> <span class="number">60</span>
+    <span class="keyword">let</span> hours <span class="punct">=</span> minutes <span class="punct">/</span> <span class="number">60</span>
+    <span class="function">print</span><span class="punct">(</span><span class="string">"  System uptime: "</span> <span class="punct">+</span> hours <span class="punct">+</span> <span class="string">" hours"</span><span class="punct">)</span>
+<span class="punct">}</span>
+
+<span class="function">print</span><span class="punct">(</span><span class="string">"Back in safe code!"</span><span class="punct">)</span>
+<span class="function">print</span><span class="punct">(</span><span class="string">"Run with: kern --unsafe --ffi unsafe_demo.kn"</span><span class="punct">)</span></code></pre>
                         <!-- Reference Tab -->
                         <div class="code-tab-content ref-tab-content" id="reference">
                             <div class="ref-columns">

@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'functions': 'functions.kn',
         'match': 'match.kn',
         'game': 'game.kn',
+        'unsafe': 'unsafe_demo.kn',
         'reference': 'Language Reference'
     };
     
