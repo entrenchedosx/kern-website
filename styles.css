@@ -1414,6 +1414,261 @@ body {
 }
 
 /* ========================================
+   USE CASES SECTION
+   ======================================== */
+
+.usecases {
+    padding: 120px 0;
+}
+
+.usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.usecase-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.usecase-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-glow), var(--shadow-lg);
+    border-color: var(--accent-primary);
+}
+
+.usecase-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--bg-tertiary);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--accent-primary);
+}
+
+.usecase-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.usecase-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.usecase-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.usecase-examples {
+    list-style: none;
+}
+
+.usecase-examples li {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+}
+
+.usecase-examples li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+/* ========================================
+   COMPARISON SECTION
+   ======================================== */
+
+.comparison {
+    padding: 120px 0;
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-secondary);
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 20px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+    background: var(--bg-tertiary);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.comparison-table td {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table .kern-col {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.comparison-table .kern-col.highlight {
+    color: var(--success);
+}
+
+.comparison-table tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+}
+
+/* ========================================
+   ROADMAP SECTION
+   ======================================== */
+
+.roadmap {
+    padding: 120px 0;
+}
+
+.roadmap-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.roadmap-item {
+    position: relative;
+    padding-left: 60px;
+    padding-bottom: 40px;
+}
+
+.roadmap-item:last-child {
+    padding-bottom: 0;
+}
+
+.roadmap-marker {
+    position: absolute;
+    left: 11px;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 3px solid var(--border-color);
+}
+
+.roadmap-item.completed .roadmap-marker {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.roadmap-item.in-progress .roadmap-marker {
+    background: var(--warning);
+    border-color: var(--warning);
+    animation: pulse 2s infinite;
+}
+
+.roadmap-item.upcoming .roadmap-marker {
+    background: var(--bg-tertiary);
+    border-color: var(--text-muted);
+}
+
+.roadmap-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.roadmap-version {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-right: 12px;
+}
+
+.roadmap-status {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.roadmap-item.completed .roadmap-status {
+    background: rgba(57, 211, 83, 0.15);
+    color: var(--success);
+}
+
+.roadmap-item.in-progress .roadmap-status {
+    background: rgba(210, 153, 34, 0.15);
+    color: var(--warning);
+}
+
+.roadmap-item.upcoming .roadmap-status {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+.roadmap-content ul {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.roadmap-content li {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.roadmap-content li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+/* ========================================
    EXTRA LIVELY ANIMATIONS
    ======================================== */
 
@@ -1677,6 +1932,10 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .usecases-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .download-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1798,7 +2057,9 @@ body {
     .features,
     .code-section,
     .quickstart,
-    .reference,
+    .usecases,
+    .comparison,
+    .roadmap,
     .download,
     .donate {
         padding: 60px 0;
@@ -1814,10 +2075,21 @@ body {
     
     /* Grids */
     .features-grid,
+    .usecases-grid,
     .download-grid,
     .donate-grid {
         grid-template-columns: 1fr;
         gap: 16px;
+    }
+    
+    .usecase-card {
+        padding: 24px;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 16px;
+        font-size: 0.85rem;
     }
     
     /* Download tabs mobile */
