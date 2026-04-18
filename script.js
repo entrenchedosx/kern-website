@@ -105,23 +105,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
     
-    // Observe feature cards
-    document.querySelectorAll('.feature-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-    });
+    // Helper function to animate elements on scroll
+    const animateOnScroll = (selector, delay = 0.1, stagger = 0.1) => {
+        document.querySelectorAll(selector).forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease ${index * stagger + delay}s, transform 0.6s ease ${index * stagger + delay}s`;
+            observer.observe(el);
+        });
+    };
     
-    // Observe download cards
-    document.querySelectorAll('.download-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
-        observer.observe(card);
-    });
+    // Animate all card types
+    animateOnScroll('.feature-card', 0, 0.1);
+    animateOnScroll('.download-card', 0, 0.15);
+    animateOnScroll('.step-card', 0, 0.15);
+    animateOnScroll('.donate-card', 0, 0.1);
+    animateOnScroll('.usecase-card', 0, 0.1);
     
-    // Code window animation
+    // Code window animation (with scale effect)
     const codeWindow = document.querySelector('.code-window');
     if (codeWindow) {
         codeWindow.style.opacity = '0';
@@ -140,22 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         codeObserver.observe(codeWindow);
     }
-    
-    // Step cards animation
-    document.querySelectorAll('.step-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
-        observer.observe(card);
-    });
-    
-    // Donate cards animation
-    document.querySelectorAll('.donate-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-    });
     
     // Parallax effect for hero background
     const heroBg = document.querySelector('.hero-bg');
@@ -184,64 +169,81 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
     
-    // Magnetic button effect
+    // ========================================
+    // INTERACTIVE MOUSE EFFECTS
+    // ========================================
+    
+    // Magnetic button effect (uses CSS custom property for transform)
     document.querySelectorAll('.btn-primary, .btn-download').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+            const x = (e.clientX - rect.left - rect.width / 2) * 0.1;
+            const y = (e.clientY - rect.top - rect.height / 2) * 0.1;
             
-            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            btn.style.setProperty('--magnetic-x', `${x}px`);
+            btn.style.setProperty('--magnetic-y', `${y}px`);
+            btn.style.transform = `translate(var(--magnetic-x, 0), var(--magnetic-y, 0))`;
         });
         
         btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'translate(0, 0)';
+            btn.style.removeProperty('--magnetic-x');
+            btn.style.removeProperty('--magnetic-y');
+            btn.style.transform = '';
         });
     });
     
-    // Sparkle trail on mouse move in hero
-    const hero = document.querySelector('.hero');
-    let lastSparkle = 0;
+    // 3D Tilt effect for cards (only if not on touch device)
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     
-    if (hero) {
-        hero.addEventListener('mousemove', (e) => {
-            const now = Date.now();
-            if (now - lastSparkle > 50) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = e.clientX + 'px';
-                sparkle.style.top = e.clientY + 'px';
-                sparkle.style.position = 'fixed';
-                sparkle.style.pointerEvents = 'none';
-                sparkle.style.zIndex = '9999';
-                document.body.appendChild(sparkle);
+    if (!isTouchDevice) {
+        document.querySelectorAll('.feature-card, .step-card, .donate-card, .usecase-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
                 
-                setTimeout(() => sparkle.remove(), 2000);
-                lastSparkle = now;
-            }
+                card.style.setProperty('--tilt-x', `${rotateX}deg`);
+                card.style.setProperty('--tilt-y', `${rotateY}deg`);
+                card.style.transform = `perspective(1000px) rotateX(var(--tilt-x, 0)) rotateY(var(--tilt-y, 0)) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.removeProperty('--tilt-x');
+                card.style.removeProperty('--tilt-y');
+                card.style.transform = '';
+            });
         });
     }
     
-    // 3D Tilt effect for cards
-    document.querySelectorAll('.feature-card, .step-card, .donate-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    // Sparkle trail effect in hero section
+    const hero = document.querySelector('.hero');
+    let lastSparkle = 0;
+    const SPARKLE_INTERVAL = 50; // ms between sparkles
+    
+    if (hero && !isTouchDevice) {
+        hero.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastSparkle < SPARKLE_INTERVAL) return;
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.cssText = `
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+            `;
+            document.body.appendChild(sparkle);
             
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-        });
-    });
+            setTimeout(() => sparkle.remove(), 2000);
+            lastSparkle = now;
+        }, { passive: true });
+    }
     
     // Copy to clipboard for donate section
     const copyButtons = document.querySelectorAll('.btn-copy');

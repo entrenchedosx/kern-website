@@ -1668,10 +1668,6 @@ body {
     color: var(--accent-primary);
 }
 
-/* ========================================
-   EXTRA LIVELY ANIMATIONS
-   ======================================== */
-
 /* Floating particles */
 @keyframes float-particle {
     0%, 100% { 
