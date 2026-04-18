@@ -178,6 +178,12 @@ body {
    Theme Toggle
    ======================================== */
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .theme-toggle {
     background: none;
     border: none;
@@ -185,7 +191,6 @@ body {
     padding: 8px;
     border-radius: 8px;
     transition: var(--transition-base);
-    margin-right: 16px;
 }
 
 .theme-toggle:hover {
@@ -1219,6 +1224,26 @@ body {
     padding: 60px 0 30px;
 }
 
+.footer.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
@@ -1228,9 +1253,6 @@ body {
     margin-bottom: 40px;
 }
 
-.footer-brand {
-    max-width: 300px;
-}
 
 .footer-logo {
     font-size: 1.5rem;
