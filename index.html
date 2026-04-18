@@ -43,9 +43,19 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
+        <div class="hero-particles">
+            <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 80%; left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="top: 40%; left: 60%; animation-delay: 6s;"></div>
+            <div class="particle" style="top: 10%; left: 50%; animation-delay: 1s;"></div>
+            <div class="particle" style="top: 70%; left: 70%; animation-delay: 3s;"></div>
+            <div class="particle" style="top: 30%; left: 90%; animation-delay: 5s;"></div>
+            <div class="particle" style="top: 50%; left: 20%; animation-delay: 7s;"></div>
+        </div>
         <div class="hero-content">
             <div class="hero-badges fade-in">
-                <span class="hero-badge">v2.0.1</span>
+                <span class="hero-badge heartbeat">v2.0.1</span>
                 <a href="https://github.com/entrenchedosx/kern" target="_blank" class="github-stars">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -61,7 +71,7 @@
                 process, filesystem, networking, and memory.
             </p>
             <div class="hero-buttons fade-in">
-                <a href="#download" class="btn btn-primary btn-ripple">
+                <a href="#download" class="btn btn-primary btn-ripple wiggle">
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
@@ -98,8 +108,8 @@
                 <p class="section-subtitle">Everything you need for systems programming and scripting</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card elastic-hover">
+                    <div class="feature-icon icon-glow">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <polyline points="14 2 14 8 20 8"></polyline>
@@ -114,8 +124,8 @@
                         No boilerplate—just write code that runs.
                     </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card elastic-hover">
+                    <div class="feature-icon icon-glow">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                             <line x1="8" y1="21" x2="16" y2="21"></line>
@@ -128,8 +138,8 @@
                         Get the speed you need without sacrificing readability.
                     </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card elastic-hover">
+                    <div class="feature-icon icon-glow">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
@@ -140,8 +150,8 @@
                         Built for systems automation and real-world scripting.
                     </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card elastic-hover">
+                    <div class="feature-icon icon-glow">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="12" cy="12" r="3"></circle>
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -153,8 +163,8 @@
                         <code>--bytecode</code>, and <code>--check</code>. No black-box behavior.
                     </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card elastic-hover">
+                    <div class="feature-icon icon-glow">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                             <polyline points="2 17 12 22 22 17"></polyline>
@@ -167,8 +177,8 @@
                         and a built-in 3D engine with ECS. Build games and visualizations.
                     </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card elastic-hover">
+                    <div class="feature-icon icon-glow">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                             <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
@@ -330,19 +340,19 @@
                 <p class="section-subtitle">Get up and running in 3 steps</p>
             </div>
             <div class="steps-grid">
-                <div class="step-card">
+                <div class="step-card elastic-hover">
                     <div class="step-number float-animation" style="animation-delay: 0s;">1</div>
                     <h3 class="step-title">Download</h3>
                     <p class="step-description">Extract the portable archive. No installer needed.</p>
                     <code class="step-code">kern-v2.0.1-windows-x64.zip</code>
                 </div>
-                <div class="step-card">
+                <div class="step-card elastic-hover">
                     <div class="step-number float-animation" style="animation-delay: 0.5s;">2</div>
                     <h3 class="step-title">Write</h3>
                     <p class="step-description">Create a <code>.kn</code> file. No main() required.</p>
                     <code class="step-code">print("Hello, Kern!")</code>
                 </div>
-                <div class="step-card">
+                <div class="step-card elastic-hover">
                     <div class="step-number float-animation" style="animation-delay: 1s;">3</div>
                     <h3 class="step-title">Run</h3>
                     <p class="step-description">Execute with the Kern VM.</p>
@@ -403,7 +413,7 @@
                                 <li>Includes Kargo package manager</li>
                                 <li>SHA-256 verified</li>
                             </ul>
-                            <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-windows-x64.zip" class="btn btn-download btn-ripple">
+                            <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-windows-x64.zip" class="btn btn-download btn-ripple wiggle">
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                     <polyline points="7 10 12 15 17 10"></polyline>
@@ -433,7 +443,7 @@
                                 <li>Core language & stdlib fully functional</li>
                                 <li class="feature-limited">Graphics: g2d/g3d coming soon</li>
                             </ul>
-                            <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-linux-x64.tar.gz" class="btn btn-download btn-ripple">
+                            <a href="https://github.com/entrenchedosx/kern/releases/download/v2.0.1/kern-v2.0.1-linux-x64.tar.gz" class="btn btn-download btn-ripple wiggle">
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                     <polyline points="7 10 12 15 17 10"></polyline>
@@ -481,7 +491,7 @@
                 <p class="section-subtitle">If Kern is useful to you, optional tips are welcome. Contributions directly support ongoing maintenance and new feature development.</p>
             </div>
             <div class="donate-grid">
-                <div class="donate-card">
+                <div class="donate-card elastic-hover">
                     <div class="donate-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -493,7 +503,7 @@
                     <code class="donate-address">bc1qpzg22xmhzkchkwc96wxm9ge5x4a8kat7gxs6u7</code>
                     <button class="btn btn-copy">Copy</button>
                 </div>
-                <div class="donate-card">
+                <div class="donate-card elastic-hover">
                     <div class="donate-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -503,7 +513,7 @@
                     <code class="donate-address">0xE2F8Ac9D4e636115a47f0c12B42292a2A9E37f8F</code>
                     <button class="btn btn-copy">Copy</button>
                 </div>
-                <div class="donate-card">
+                <div class="donate-card elastic-hover">
                     <div class="donate-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="12" cy="12" r="10"></circle>

@@ -199,6 +199,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Sparkle trail on mouse move in hero
+    const hero = document.querySelector('.hero');
+    let lastSparkle = 0;
+    
+    if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastSparkle > 50) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.position = 'fixed';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 2000);
+                lastSparkle = now;
+            }
+        });
+    }
+    
     // 3D Tilt effect for cards
     document.querySelectorAll('.feature-card, .step-card, .donate-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
