@@ -4,154 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ========================================
-    // SCROLL PROGRESS BAR
-    // ========================================
-    const scrollProgress = document.getElementById('scrollProgress');
-    const updateScrollProgress = () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercent = (scrollTop / scrollHeight) * 100;
-        scrollProgress.style.width = scrollPercent + '%';
-    };
-    
-    // ========================================
-    // BACK TO TOP BUTTON
-    // ========================================
-    const backToTop = document.getElementById('backToTop');
-    const updateBackToTop = () => {
-        if (window.pageYOffset > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    };
-    
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    // ========================================
-    // FLOATING SHAPES MOUSE INTERACTION
-    // ========================================
-    const floatingShapes = document.getElementById('floatingShapes');
-    const shapes = document.querySelectorAll('.shape');
-    let mouseX = 0;
-    let mouseY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX / window.innerWidth;
-        mouseY = e.clientY / window.innerHeight;
-        
-        shapes.forEach((shape, index) => {
-            const speed = (index + 1) * 0.01;
-            const x = (mouseX - 0.5) * speed * 100;
-            const y = (mouseY - 0.5) * speed * 100;
-            
-            shape.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    });
-    
-    // ========================================
-    // ENHANCED PARALLAX EFFECT
-    // ========================================
-    const heroBg = document.querySelector('.hero-bg');
-    const heroContent = document.querySelector('.hero-content');
-    const heroParticles = document.querySelector('.hero-particles');
-    
-    const updateParallax = () => {
-        const scrolled = window.pageYOffset;
-        const parallaxSpeed = 0.5;
-        const contentSpeed = 0.3;
-        const particleSpeed = 0.7;
-        
-        if (heroBg) {
-            heroBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-        }
-        if (heroContent) {
-            heroContent.style.transform = `translateY(${scrolled * contentSpeed}px)`;
-        }
-        if (heroParticles) {
-            heroParticles.style.transform = `translateY(${scrolled * particleSpeed}px)`;
-        }
-    };
-    
-    // ========================================
-    // COMBINED SCROLL HANDLER
-    // ========================================
-    let ticking = false;
-    const handleScroll = () => {
-        updateScrollProgress();
-        updateBackToTop();
-        updateParallax();
-        
-        // Update navbar (existing functionality)
-        const navbar = document.getElementById('navbar');
-        const currentScrollY = window.pageYOffset;
-        
-        if (currentScrollY > 10) {
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-        
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollY = currentScrollY;
-        ticking = false;
-    };
-    
-    let lastScrollY = window.scrollY;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                handleScroll();
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-    
-    // ========================================
-    // KEYBOARD NAVIGATION
-    // ========================================
-    document.addEventListener('keydown', (e) => {
-        // Press 'h' to go home
-        if (e.key === 'h' && !e.ctrlKey && !e.metaKey) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        // Press 'Escape' to close mobile menu
-        if (e.key === 'Escape') {
-            const navLinks = document.querySelector('.nav-links');
-            const navToggle = document.getElementById('navToggle');
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                const spans = navToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        }
-    });
-    
-    // ========================================
-    // REDUCED MOTION PREFERENCE
-    // ========================================
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReducedMotion.matches) {
-        document.body.style.animation = 'none';
-        shapes.forEach(shape => {
-            shape.style.animation = 'none';
-        });
-    }
-    
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
@@ -185,6 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    // Navbar background on scroll
+    const navbar = document.getElementById('navbar');
+    let lastScrollY = window.scrollY;
+    
+    const updateNavbar = () => {
+        const currentScrollY = window.scrollY;
+        
+        // Add shadow when scrolled
+        if (currentScrollY > 10) {
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+        } else {
+            navbar.style.boxShadow = 'none';
+        }
+        
+        // Hide/show on scroll direction
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
+    };
+    
+    // Throttled scroll handler
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateNavbar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -255,6 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
         codeObserver.observe(codeWindow);
     }
     
+    // Parallax effect for hero background
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    }
     
     // Typing effect for hero subtitle
     const heroSubtitle = document.querySelector('.hero-subtitle');
@@ -349,37 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
             lastSparkle = now;
         }, { passive: true });
     }
-    
-    // ========================================
-    // DOWNLOAD BUTTON LOADING ANIMATIONS
-    // ========================================
-    const downloadButtons = document.querySelectorAll('.btn-download');
-    downloadButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // Skip if button is disabled or already loading
-            if (btn.disabled || btn.classList.contains('loading')) return;
-            
-            // Add loading state
-            btn.classList.add('loading');
-            const originalText = btn.innerHTML;
-            
-            // Simulate download preparation
-            setTimeout(() => {
-                btn.classList.remove('loading');
-                btn.innerHTML = originalText;
-                
-                // Show success feedback
-                const originalBg = btn.style.background;
-                btn.style.background = 'var(--success)';
-                btn.innerHTML = '✓ Downloaded';
-                
-                setTimeout(() => {
-                    btn.style.background = originalBg;
-                    btn.innerHTML = originalText;
-                }, 2000);
-            }, 1500);
-        });
-    });
     
     // Copy to clipboard for donate section
     const copyButtons = document.querySelectorAll('.btn-copy');
