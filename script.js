@@ -185,41 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Navbar background on scroll
-    const navbar = document.getElementById('navbar');
-    let lastScrollY = window.scrollY;
-    
-    const updateNavbar = () => {
-        const currentScrollY = window.scrollY;
-        
-        // Add shadow when scrolled
-        if (currentScrollY > 10) {
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-        
-        // Hide/show on scroll direction
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollY = currentScrollY;
-    };
-    
-    // Throttled scroll handler
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                updateNavbar();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -290,14 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
         codeObserver.observe(codeWindow);
     }
     
-    // Parallax effect for hero background
-    const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
-    }
     
     // Typing effect for hero subtitle
     const heroSubtitle = document.querySelector('.hero-subtitle');
