@@ -28,11 +28,6 @@
     --gradient-primary: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
     --gradient-bg: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
     --gradient-glow: radial-gradient(ellipse at top, rgba(88, 166, 255, 0.15) 0%, transparent 50%);
-    --gradient-mesh: radial-gradient(at 40% 20%, rgba(88, 166, 255, 0.3) 0%, transparent 50%),
-                      radial-gradient(at 80% 0%, rgba(121, 192, 255, 0.3) 0%, transparent 50%),
-                      radial-gradient(at 0% 50%, rgba(163, 113, 247, 0.2) 0%, transparent 50%),
-                      radial-gradient(at 80% 50%, rgba(88, 166, 255, 0.2) 0%, transparent 50%),
-                      radial-gradient(at 0% 100%, rgba(121, 192, 255, 0.3) 0%, transparent 50%);
     
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -61,15 +56,11 @@ html {
 
 body {
     font-family: var(--font-primary);
-    background: var(--bg-primary), var(--gradient-mesh);
-    background-size: 100% 100%, 200% 200%;
+    background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    animation: mesh-gradient 20s ease infinite;
-    position: relative;
-    overflow-x: hidden;
 }
 
 .container {
@@ -181,6 +172,163 @@ body {
     height: 2px;
     background: var(--text-primary);
     transition: var(--transition-fast);
+}
+
+/* ========================================
+   Theme Toggle
+   ======================================== */
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-toggle {
+    background: #ff0000 !important;
+    border: 2px solid #ffffff !important;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.theme-toggle:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.theme-toggle:hover .theme-icon {
+    color: white;
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.theme-toggle:hover .theme-icon {
+    color: var(--text-primary);
+}
+
+.sun-icon {
+    display: block;
+}
+
+.moon-icon {
+    display: none;
+}
+
+/* Light theme styles */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --bg-tertiary: #f3f4f6;
+    --bg-elevated: #ffffff;
+    
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    
+    --accent-primary: #0969da;
+    --accent-secondary: #1f883d;
+    --accent-hover: #0860ca;
+    
+    --border-color: #d0d7de;
+    --border-subtle: #e1e4e8;
+    
+    --gradient-bg: linear-gradient(180deg, #ffffff 0%, #f6f8fa 100%);
+    --gradient-glow: radial-gradient(ellipse at top, rgba(9, 105, 218, 0.1) 0%, transparent 50%);
+    
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-glow: 0 0 40px rgba(9, 105, 218, 0.1);
+}
+
+[data-theme="light"] .sun-icon {
+    display: none;
+}
+
+[data-theme="light"] .moon-icon {
+    display: block;
+}
+
+/* Navbar styles for light theme */
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .nav-logo {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .nav-links a {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+/* ========================================
+   Search Box
+   ======================================== */
+
+.nav-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 16px;
+}
+
+.nav-search input {
+    background: #00ff00 !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #000000 !important;
+    font-size: 14px;
+    width: 150px;
+    transition: var(--transition-base);
+}
+
+.nav-search input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    width: 200px;
+}
+
+.nav-search input::placeholder {
+    color: var(--text-muted);
+}
+
+.nav-search button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: var(--transition-fast);
+}
+
+.nav-search button:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.nav-search svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* ========================================
@@ -727,26 +875,12 @@ body {
 }
 
 .download-card {
-    background: rgba(22, 27, 34, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(48, 54, 61, 0.5);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 40px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.download-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.3), transparent);
-    animation: shimmer 3s ease-in-out infinite;
+    transition: var(--transition-base);
 }
 
 .download-card.primary {
@@ -834,7 +968,6 @@ body {
     gap: 8px;
     transition: var(--transition-base);
     box-shadow: var(--shadow-md);
-    animation: pulse 2s infinite;
 }
 
 .btn-download:hover {
@@ -879,27 +1012,9 @@ body {
 }
 
 .step-card {
-    background: rgba(22, 27, 34, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(48, 54, 61, 0.5);
-    border-radius: 16px;
-    padding: 32px;
-    display: flex;
-    gap: 24px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    text-align: center;
+    padding: 32px 24px;
     position: relative;
-    overflow: hidden;
-}
-
-.step-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.3), transparent);
-    animation: shimmer 3s ease-in-out infinite;
 }
 
 .step-number {
@@ -1027,26 +1142,18 @@ body {
 }
 
 .donate-card {
-    background: rgba(22, 27, 34, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(48, 54, 61, 0.5);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 32px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: var(--transition-base);
 }
 
-.donate-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.3), transparent);
-    animation: shimmer 3s ease-in-out infinite;
+.donate-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-glow);
 }
 
 .donate-icon {
@@ -1127,6 +1234,26 @@ body {
     padding: 60px 0 30px;
 }
 
+.footer.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
@@ -1136,9 +1263,6 @@ body {
     margin-bottom: 40px;
 }
 
-.footer-brand {
-    max-width: 300px;
-}
 
 .footer-logo {
     font-size: 1.5rem;
@@ -1478,25 +1602,11 @@ body {
 }
 
 .usecase-card {
-    background: rgba(22, 27, 34, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(48, 54, 61, 0.5);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 40px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.usecase-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.3), transparent);
-    animation: shimmer 3s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .usecase-card:hover {
@@ -1970,216 +2080,6 @@ body {
     animation: glitch 0.3s ease infinite;
 }
 
-/* Mesh gradient animation */
-@keyframes mesh-gradient {
-    0%, 100% { background-position: 0% 50%, 100% 50%, 50% 0%, 50% 100%, 0% 100%; }
-    25% { background-position: 100% 50%, 0% 50%, 50% 100%, 50% 0%, 100% 100%; }
-    50% { background-position: 50% 100%, 50% 0%, 0% 50%, 100% 50%, 50% 50%; }
-    75% { background-position: 0% 50%, 100% 50%, 50% 0%, 50% 100%, 0% 0%; }
-}
-
-/* ========================================
-   FLOATING GEOMETRIC SHAPES
-   ======================================== */
-
-.floating-shapes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.shape {
-    position: absolute;
-    opacity: 0.1;
-    animation: float-shape 20s infinite ease-in-out;
-    transition: all 0.3s ease;
-}
-
-.shape.circle {
-    border-radius: 50%;
-    background: var(--accent-primary);
-}
-
-.shape.triangle {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 35px solid var(--accent-secondary);
-}
-
-.shape.square {
-    background: var(--success);
-    transform: rotate(45deg);
-}
-
-.shape.hexagon {
-    background: var(--warning);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-}
-
-@keyframes float-shape {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 0.1;
-    }
-    25% {
-        transform: translateY(-30px) rotate(90deg) scale(1.1);
-        opacity: 0.15;
-    }
-    50% {
-        transform: translateY(-60px) rotate(180deg) scale(0.9);
-        opacity: 0.1;
-    }
-    75% {
-        transform: translateY(-30px) rotate(270deg) scale(1.05);
-        opacity: 0.15;
-    }
-}
-
-/* ========================================
-   SCROLL PROGRESS BAR
-   ======================================== */
-
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-    z-index: 10000;
-    transition: width 0.1s ease;
-    box-shadow: 0 0 10px var(--accent-primary);
-}
-
-/* ========================================
-   BACK TO TOP BUTTON
-   ======================================== */
-
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.back-to-top:hover {
-    background: var(--bg-tertiary);
-    border-color: var(--accent-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(88, 166, 255, 0.3);
-}
-
-.back-to-top svg {
-    width: 20px;
-    height: 20px;
-    color: var(--text-primary);
-}
-
-/* Shimmer animation for glassmorphism */
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* Loading animations for download buttons */
-.btn-download.loading {
-    pointer-events: none;
-    opacity: 0.8;
-    position: relative;
-    color: transparent;
-}
-
-.btn-download.loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin: -10px 0 0 -10px;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    color: var(--bg-primary);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Enhanced hover states for glassmorphism cards */
-.feature-card:hover,
-.usecase-card:hover,
-.download-card:hover,
-.step-card:hover,
-.donate-card:hover {
-    background: rgba(33, 38, 45, 0.9);
-    border-color: rgba(88, 166, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(88, 166, 255, 0.1);
-}
-
-/* Animated section dividers */
-.section-divider {
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(88, 166, 255, 0.3), 
-        transparent
-    );
-    margin: 80px 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.section-divider::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(121, 192, 255, 0.6), 
-        transparent
-    );
-    animation: divider-shimmer 3s ease-in-out infinite;
-}
-
-@keyframes divider-shimmer {
-    0%, 100% { left: -100%; }
-    50% { left: 100%; }
-}
-
 /* ========================================
    Responsive Design
    ======================================== */
@@ -2249,6 +2149,14 @@ body {
 /* Mobile (< 768px) */
 @media (max-width: 768px) {
     /* Navigation */
+    .nav-search {
+        display: none; /* Hide search on mobile */
+    }
+    
+    .theme-toggle {
+        margin-right: 12px;
+    }
+    
     .nav-links {
         position: fixed;
         top: 64px;

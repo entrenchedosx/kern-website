@@ -5,36 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kern Programming Language</title>
     <meta name="description" content="Kern - Python-like productivity, C++-level system access. A programming language with readable scripts, fast bytecode VM, and inspectable pipeline.">
-    <meta name="keywords" content="Kern, programming language, systems programming, bytecode, VM, scripting, FFI, unsafe blocks">
-    <meta name="author" content="entrenchedosx">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="Kern Programming Language">
     <meta property="og:description" content="Python-like productivity. C++-level system access.">
     <meta property="og:image" content="https://github.com/entrenchedosx/kern/raw/main/kern_logo.png">
     <meta property="og:url" content="https://entrenchedosx.github.io/kern-website">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Kern Programming Language">
-    
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@entrenchedosx">
-    <meta name="twitter:creator" content="@entrenchedosx">
-    
-    <!-- Additional meta -->
-    <meta name="theme-color" content="#0d1117">
-    <meta name="msapplication-TileColor" content="#0d1117">
     <link rel="icon" type="image/x-icon" href="https://github.com/entrenchedosx/kern/raw/main/kern_logo.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Font loading optimization - Google Fonts handles display:swap automatically */
-    </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Floating Geometric Shapes -->
+    <div class="floating-shapes" id="floatingShapes">
+        <div class="shape circle" style="width: 60px; height: 60px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="shape triangle" style="top: 20%; right: 10%; animation-delay: 2s;"></div>
+        <div class="shape square" style="width: 40px; height: 40px; top: 60%; left: 15%; animation-delay: 4s;"></div>
+        <div class="shape hexagon" style="width: 50px; height: 50px; top: 80%; right: 20%; animation-delay: 6s;"></div>
+        <div class="shape circle" style="width: 30px; height: 30px; top: 40%; left: 80%; animation-delay: 1s;"></div>
+        <div class="shape square" style="width: 45px; height: 45px; top: 70%; left: 60%; animation-delay: 3s;"></div>
+        <div class="shape triangle" style="top: 15%; left: 40%; animation-delay: 5s;"></div>
+        <div class="shape hexagon" style="width: 35px; height: 35px; top: 50%; right: 30%; animation-delay: 7s;"></div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+    
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -47,37 +51,10 @@
                 <li><a href="#usecases">Use Cases</a></li>
                 <li><a href="#code">Examples</a></li>
                 <li><a href="https://github.com/entrenchedosx/kern/tree/main/docs" target="_blank">Docs</a></li>
-                <li class="nav-search">
-                    <input type="search" id="searchInput" placeholder="Search..." aria-label="Search documentation">
-                    <button id="searchBtn" aria-label="Search">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                    </button>
-                </li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#donate">Donate</a></li>
                 <li><a href="https://github.com/entrenchedosx/kern" target="_blank">GitHub</a></li>
             </ul>
-            <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
-            </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -87,7 +64,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero" aria-label="Hero section">
+    <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="hero-particles">
             <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
@@ -147,11 +124,11 @@
     <div class="section-divider"></div>
 
     <!-- Features Section -->
-    <section class="features" id="features" aria-labelledby="features-title">
+    <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" id="features-title">Why Choose Kern?</h2>
-                <p class="section-subtitle">Powerful features for modern development</p>
+                <h2 class="section-title">Features</h2>
+                <p class="section-subtitle">Everything you need for systems programming and scripting</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card elastic-hover">
@@ -245,10 +222,10 @@
     <div class="section-divider"></div>
 
     <!-- Code Example Section -->
-    <section class="code-section" id="code" aria-labelledby="code-title">
+    <section class="code-section" id="code">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" id="code-title">Write Kern Code</h2>
+                <h2 class="section-title">Write Kern Code</h2>
                 <p class="section-subtitle">From scripts to systems to games</p>
             </div>
             <div class="code-tabs">
@@ -443,11 +420,11 @@
     <div class="section-divider"></div>
 
     <!-- Download Section -->
-    <section class="download" id="download" aria-labelledby="download-title">
+    <section class="download" id="download">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" id="download-title">Download Kern v2.0.1</h2>
-                <p class="section-subtitle">Get started with the latest stable release</p>
+                <h2 class="section-title">Get Kern</h2>
+                <p class="section-subtitle">Choose your platform</p>
             </div>
             <div class="download-tabs">
                 <div class="download-tab-buttons">
@@ -562,10 +539,10 @@
     <div class="section-divider"></div>
 
     <!-- Use Cases Section -->
-    <section class="usecases" id="usecases" aria-labelledby="usecases-title">
+    <section class="usecases" id="usecases">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" id="usecases-title">What You Can Build</h2>
+                <h2 class="section-title">What You Can Build</h2>
                 <p class="section-subtitle">Real-world applications powered by Kern</p>
             </div>
             <div class="usecases-grid">

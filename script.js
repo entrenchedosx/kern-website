@@ -4,43 +4,151 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    alert('JavaScript is loading! You should see this message.');
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
+    // ========================================
+    // SCROLL PROGRESS BAR
+    // ========================================
+    const scrollProgress = document.getElementById('scrollProgress');
+    const updateScrollProgress = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    };
     
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', savedTheme);
+    // ========================================
+    // BACK TO TOP BUTTON
+    // ========================================
+    const backToTop = document.getElementById('backToTop');
+    const updateBackToTop = () => {
+        if (window.pageYOffset > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    };
     
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    }
+    });
     
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
+    // ========================================
+    // FLOATING SHAPES MOUSE INTERACTION
+    // ========================================
+    const floatingShapes = document.getElementById('floatingShapes');
+    const shapes = document.querySelectorAll('.shape');
+    let mouseX = 0;
+    let mouseY = 0;
     
-    if (searchInput && searchBtn) {
-        const performSearch = () => {
-            const query = searchInput.value.trim();
-            if (query) {
-                // Open GitHub docs search with query
-                window.open(`https://github.com/entrenchedosx/kern/search?q=${encodeURIComponent(query)}&type=code`, '_blank');
-            }
-        };
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX / window.innerWidth;
+        mouseY = e.clientY / window.innerHeight;
         
-        searchBtn.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                performSearch();
+        shapes.forEach((shape, index) => {
+            const speed = (index + 1) * 0.01;
+            const x = (mouseX - 0.5) * speed * 100;
+            const y = (mouseY - 0.5) * speed * 100;
+            
+            shape.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+    
+    // ========================================
+    // ENHANCED PARALLAX EFFECT
+    // ========================================
+    const heroBg = document.querySelector('.hero-bg');
+    const heroContent = document.querySelector('.hero-content');
+    const heroParticles = document.querySelector('.hero-particles');
+    
+    const updateParallax = () => {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        const contentSpeed = 0.3;
+        const particleSpeed = 0.7;
+        
+        if (heroBg) {
+            heroBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        }
+        if (heroContent) {
+            heroContent.style.transform = `translateY(${scrolled * contentSpeed}px)`;
+        }
+        if (heroParticles) {
+            heroParticles.style.transform = `translateY(${scrolled * particleSpeed}px)`;
+        }
+    };
+    
+    // ========================================
+    // COMBINED SCROLL HANDLER
+    // ========================================
+    let ticking = false;
+    const handleScroll = () => {
+        updateScrollProgress();
+        updateBackToTop();
+        updateParallax();
+        
+        // Update navbar (existing functionality)
+        const navbar = document.getElementById('navbar');
+        const currentScrollY = window.pageYOffset;
+        
+        if (currentScrollY > 10) {
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+        } else {
+            navbar.style.boxShadow = 'none';
+        }
+        
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+    };
+    
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll();
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+    
+    // ========================================
+    // KEYBOARD NAVIGATION
+    // ========================================
+    document.addEventListener('keydown', (e) => {
+        // Press 'h' to go home
+        if (e.key === 'h' && !e.ctrlKey && !e.metaKey) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // Press 'Escape' to close mobile menu
+        if (e.key === 'Escape') {
+            const navLinks = document.querySelector('.nav-links');
+            const navToggle = document.getElementById('navToggle');
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const spans = navToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
             }
+        }
+    });
+    
+    // ========================================
+    // REDUCED MOTION PREFERENCE
+    // ========================================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+        document.body.style.animation = 'none';
+        shapes.forEach(shape => {
+            shape.style.animation = 'none';
         });
     }
     
@@ -284,6 +392,37 @@ document.addEventListener('DOMContentLoaded', () => {
             lastSparkle = now;
         }, { passive: true });
     }
+    
+    // ========================================
+    // DOWNLOAD BUTTON LOADING ANIMATIONS
+    // ========================================
+    const downloadButtons = document.querySelectorAll('.btn-download');
+    downloadButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Skip if button is disabled or already loading
+            if (btn.disabled || btn.classList.contains('loading')) return;
+            
+            // Add loading state
+            btn.classList.add('loading');
+            const originalText = btn.innerHTML;
+            
+            // Simulate download preparation
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                btn.innerHTML = originalText;
+                
+                // Show success feedback
+                const originalBg = btn.style.background;
+                btn.style.background = 'var(--success)';
+                btn.innerHTML = '✓ Downloaded';
+                
+                setTimeout(() => {
+                    btn.style.background = originalBg;
+                    btn.innerHTML = originalText;
+                }, 2000);
+            }, 1500);
+        });
+    });
     
     // Copy to clipboard for donate section
     const copyButtons = document.querySelectorAll('.btn-copy');
